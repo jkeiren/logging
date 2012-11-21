@@ -13,7 +13,7 @@
 #include <string>
 #include <cassert>
 #include <iostream>
-#include "logger.h"
+#include "cpplogging/logger.h"
 
 namespace log {
 

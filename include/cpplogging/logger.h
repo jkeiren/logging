@@ -546,7 +546,7 @@ std::set<output_policy*> initialise_output_policies()
 #define log(level, ...) \
 if ((level) > MAX_LOG_LEVEL) ; \
 else if ((level) > (log::logger::get_reporting_level(__VA_ARGS__))) ; \
-else log::mcrl2_logger().get(level, ##__VA_ARGS__)
+else log::logger().get(level, ##__VA_ARGS__)
 
 #define logEnabled(level, ...) \
 (((level) <= MAX_LOG_LEVEL) && ((level) <= (log::logger::get_reporting_level(__VA_ARGS__))))
