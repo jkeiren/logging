@@ -15,7 +15,7 @@
 #include <iostream>
 #include "cpplogging/logger.h"
 
-namespace log {
+namespace cpplogging {
 
 std::string format_time(const time_t* t)
 {

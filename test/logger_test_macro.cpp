@@ -14,7 +14,7 @@
 #define MAX_LOG_LEVEL debug3
 #include "cpplogging/logger.h"
 
-using namespace log;
+using namespace cpplogging;
 
 void print_all_log_levels()
 {

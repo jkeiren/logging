@@ -24,7 +24,7 @@
 #include <map>
 #include <set>
 
-namespace log {
+namespace cpplogging {
 
 /// \brief Log levels that are supported
 enum log_level_t
@@ -528,7 +528,7 @@ std::set<output_policy*> initialise_output_policies()
 /// Unless otherwise specified, we compile away all debug messages that have
 /// a log level greater than MCRL2_MAX_LOG_LEVEL.
 #ifndef MAX_LOG_LEVEL
-#define MAX_LOG_LEVEL log::debug
+#define MAX_LOG_LEVEL cpplogging::debug
 #endif
 
 /// log(level) provides the function used to log. It performs two
@@ -545,11 +545,11 @@ std::set<output_policy*> initialise_output_policies()
 // to allow mCRL2log(level) as well as mCRL2log(level, "hint")
 #define log(level, ...) \
 if ((level) > MAX_LOG_LEVEL) ; \
-else if ((level) > (log::logger::get_reporting_level(__VA_ARGS__))) ; \
-else log::logger().get(level, ##__VA_ARGS__)
+else if ((level) > (cpplogging::logger::get_reporting_level(__VA_ARGS__))) ; \
+else cpplogging::logger().get(level, ##__VA_ARGS__)
 
 #define logEnabled(level, ...) \
-(((level) <= MAX_LOG_LEVEL) && ((level) <= (log::logger::get_reporting_level(__VA_ARGS__))))
+(((level) <= MAX_LOG_LEVEL) && ((level) <= (cpplogging::logger::get_reporting_level(__VA_ARGS__))))
 
-  } // namespace log
+  } // namespace cpplogging
 #endif /* LOGGING_LOGGER_H */
