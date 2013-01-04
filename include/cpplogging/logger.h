@@ -527,8 +527,8 @@ std::set<output_policy*> initialise_output_policies()
 
 /// Unless otherwise specified, we compile away all debug messages that have
 /// a log level greater than MCRL2_MAX_LOG_LEVEL.
-#ifndef MAX_LOG_LEVEL
-#define MAX_LOG_LEVEL cpplogging::debug
+#ifndef CPPLOG_MAX_LOG_LEVEL
+#define CPPLOG_MAX_LOG_LEVEL cpplogging::debug
 #endif
 
 /// log(level) provides the function used to log. It performs two
@@ -543,13 +543,13 @@ std::set<output_policy*> initialise_output_policies()
 // (accessed 7/4/2011)
 // We also use the facilities to provide a variable number of arguments to a macro, in order
 // to allow mCRL2log(level) as well as mCRL2log(level, "hint")
-#define log(level, ...) \
-if ((level) > MAX_LOG_LEVEL) ; \
+#define cpplog(level, ...) \
+if ((level) > CPPLOG_MAX_LOG_LEVEL) ; \
 else if ((level) > (cpplogging::logger::get_reporting_level(__VA_ARGS__))) ; \
 else cpplogging::logger().get(level, ##__VA_ARGS__)
 
-#define logEnabled(level, ...) \
-(((level) <= MAX_LOG_LEVEL) && ((level) <= (cpplogging::logger::get_reporting_level(__VA_ARGS__))))
+#define cpplogEnabled(level, ...) \
+(((level) <= CPPLOG_MAX_LOG_LEVEL) && ((level) <= (cpplogging::logger::get_reporting_level(__VA_ARGS__))))
 
   } // namespace cpplogging
 #endif /* LOGGING_LOGGER_H */
