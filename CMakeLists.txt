@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 2.6)
 project (cpplogging)
 
-add_subdirectory(external/googletest)
+option(CPPLOGGING_STANDALONE "Build logging library as standalone project" ON)
+
+if(CPPLOGGING_STANDALONE)
+  add_subdirectory(external/googletest)
+endif()
 
 # Trick to add header files to projects in IDEs like Visual Studio and XCode
 file(GLOB_RECURSE HEADERS "include/**.h")
