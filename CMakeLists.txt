@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 2.6)
 project (cpplogging)
 
-option(CPPLOGGING_STANDALONE "Build logging library as standalone project" ON)
+if(NOT DEFINED CPPLOGGING_STANDALONE)
+  message("Building logging library as standalone project")
+  option(CPPLOGGING_STANDALONE "Build logging library as standalone project" ON)
+endif()
 
 if(CPPLOGGING_STANDALONE)
   add_subdirectory(external/googletest)
