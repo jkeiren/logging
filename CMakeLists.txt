@@ -4,21 +4,23 @@ project (cpplogging)
 message (STATUS "Internal googletest: ${cpplogging_USE_INTERNAL_GOOGLETEST}")
 
 # Target directories for the installation
-if(NOT ${PROJECT_NAME}_BIN_DIR)
+if(NOT DEFINED ${PROJECT_NAME}_BIN_DIR)
   set(${PROJECT_NAME}_BIN_DIR "bin" CACHE FILEPATH "Installation directory for the binaries")
 endif()
-if(NOT ${PROJECT_NAME}_LIB_DIR)
+if(NOT DEFINED ${PROJECT_NAME}_LIB_DIR)
   set(${PROJECT_NAME}_LIB_DIR "lib" CACHE FILEPATH "Installation directory for the libraries")
 endif()
-if(NOT ${PROJECT_NAME}_INCLUDE_DIR)
+if(NOT DEFINED ${PROJECT_NAME}_INCLUDE_DIR)
   set(${PROJECT_NAME}_INCLUDE_DIR "include/${PROJECT_NAME}" CACHE FILEPATH "Installation directory for the headers")
 endif()
-if(NOT ${PROJECT_NAME}_USE_INTERNAL_GOOGLETEST)
+
+# Google test
+if(NOT DEFINED ${PROJECT_NAME}_USE_INTERNAL_GOOGLETEST)
   set(${PROJECT_NAME}_USE_INTERNAL_GOOGLETEST ON CACHE BOOL "If set, the internal version of googletest is used, otherwise we rely on a version of googletest being included in a calling script")
 endif()
 
 if(${PROJECT_NAME}_USE_INTERNAL_GOOGLETEST)
-  message(STATUS "Using Google test from external/googletest")
+  message(STATUS "${PROJECT_NAME}: Using Google test from external/googletest")
   add_subdirectory(external/googletest)
 endif()
 
