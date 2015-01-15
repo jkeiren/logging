@@ -1,8 +1,8 @@
 # ########## Project setup ##########
 project(cpplogging_tests)
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8)
 
-ENABLE_TESTING()
+enable_testing()
 # Define macro for build_and_run_test_targets
 # This method compiles tests when invoked
 macro(build_and_run_test_target TARGET)
