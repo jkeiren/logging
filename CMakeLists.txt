@@ -1,7 +1,5 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8)
 project (cpplogging)
-
-message (STATUS "Internal googletest: ${cpplogging_USE_INTERNAL_GOOGLETEST}")
 
 # Target directories for the installation
 if(NOT DEFINED ${PROJECT_NAME}_BIN_DIR)
@@ -14,13 +12,8 @@ if(NOT DEFINED ${PROJECT_NAME}_INCLUDE_DIR)
   set(${PROJECT_NAME}_INCLUDE_DIR "include/${PROJECT_NAME}" CACHE FILEPATH "Installation directory for the headers")
 endif()
 
-# Google test
-if(NOT DEFINED ${PROJECT_NAME}_USE_INTERNAL_GOOGLETEST)
-  set(${PROJECT_NAME}_USE_INTERNAL_GOOGLETEST ON CACHE BOOL "If set, the internal version of googletest is used, otherwise we rely on a version of googletest being included in a calling script")
-endif()
-
-if(${PROJECT_NAME}_USE_INTERNAL_GOOGLETEST)
-  message(STATUS "${PROJECT_NAME}: Using Google test from external/googletest")
+### Include google test
+if(NOT TARGET gtest)
   add_subdirectory(external/googletest)
 endif()
 
