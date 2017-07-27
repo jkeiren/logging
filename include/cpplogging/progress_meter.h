@@ -14,7 +14,7 @@
 
 #include <cstddef>
 #include <iostream>
-#include "logger.h"
+#include "cpplogging/logger.h"
 
 namespace cpplogging
 {
